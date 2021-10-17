@@ -15,7 +15,7 @@ for i in range(10):
     computer = random.choice(objects)
     user = input("Now enter your choice: ")
     if user == "S" and computer == "Snake":
-        print("Same choice", "\t\t\t\t\t\t\tYou=", upoints, ",Computer=", cpoints)
+        print("Same choice", "\t\t\t\t\t\tYou=", upoints, ",Computer=", cpoints)
         playsound('D:\\game sounds\\same choice1.mp3')
     elif user == "S" and computer == "Water":
         upoints+=1
@@ -30,7 +30,7 @@ for i in range(10):
         print("Results\nYou-Water", "Computer-", computer, "\t\t\t\tYou=", upoints, ",Computer=", cpoints)
         playsound('D:\\game sounds\\C get point.mp3')
     elif user == "W" and computer == "Water":
-        print("Same choice", "\t\t\t\t\t\t\tYou=", upoints, ",Computer=", cpoints)
+        print("Same choice", "\t\t\t\t\t\tYou=", upoints, ",Computer=", cpoints)
         playsound('D:\\game sounds\\same choice1.mp3')
     elif user == "W" and computer == "Gun":
         upoints+=1
@@ -45,7 +45,7 @@ for i in range(10):
         print("Results\nYou-Gun", "Computer-", computer, "\t\t\t\tYou=", upoints, ",Computer=", cpoints)
         playsound('D:\\game sounds\\C get point.mp3')
     elif user == "G" and computer == "Gun":
-        print("Same choice", "\t\t\t\t\t\t\tYou=", upoints, ",Computer=", cpoints)
+        print("Same choice", "\t\t\t\t\t\tYou=", upoints, ",Computer=", cpoints)
         playsound('D:\\game sounds\\same choice1.mp3')
     else:
         print("Invalid input !!! Enter S or W or G")
