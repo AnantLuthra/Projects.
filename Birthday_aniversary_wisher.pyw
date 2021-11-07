@@ -27,20 +27,31 @@ def birthday_checker(list):
         content = element.split("-")
         if content[0] == month and content[1] == date1:
             t_birthday = content[2]
-    return t_birthday
+            return t_birthday
+        else:
+            pass
 
 
 def anniversary_checker(list):
-    pass
+    month = today_date_month()[0]
+    date1 = today_date_month()[1]
+    t_a = False
+    for element in list:
+        content = element.split("-")
+        if content[0] == month and content[1] == date1:
+            t_anniversary = content[2]
+            return t_anniversary
+        else:
+            pass
 
 
 def notification_pusher(string, event, path):
     if event == "Birthday":
         notification.notify(
-            title=f"Today is {string} birthday",
+            title=f"Today is {string}'s birthday",
             message=f"Wish {string} a very happy birthday and give them blessings..",
             app_icon=fr"{path}\birthday_cake.ico",
-            timeout=12)
+            timeout=5)
 
     elif event == "Anniversary":
         couple = string.split("/")
@@ -48,7 +59,7 @@ def notification_pusher(string, event, path):
             title=f"Today is {couple[0]} and {couple[1]}'s Anniversary.",
             message=f"Wish {couple[0]} and {couple[1]} a very happy Anniversary and give them blessings..",
             app_icon=fr"{path}\heart_valentine.ico",
-            timeout=12)
+            timeout=5)
 
 
 if __name__ == '__main__':
@@ -63,8 +74,19 @@ if __name__ == '__main__':
 
     today_birthday = birthday_checker(birthday_list)
     today_anniversar = anniversary_checker(anniversary_list)
+    if today_birthday != None:
+        today_birthday_list = today_birthday.split("/")
+        for i in today_birthday_list:
+            notification_pusher(i, "Birthday", path)
+            time.sleep(7)
+    else:
+        pass
 
-    today_birthday_list = today_birthday.split("/")
-    for i in today_birthday_list:
-        notification_pusher(i, "Birthday", path)
-        time.sleep(3)
+    if today_anniversar != None:
+        today_anniversay_list = today_anniversar.split("+")
+        print(today_anniversay_list)
+        for i in today_anniversay_list:
+            notification_pusher(i, "Anniversary", path)
+            time.sleep(7)
+    else:
+        pass
