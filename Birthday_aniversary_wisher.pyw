@@ -10,17 +10,23 @@ import os
 
 
 def today_date_month():
+    """
+    Function to get today's date and month for checking our text file..
+    """
     full_time = (time.asctime())
     date_month = full_time.split(" ")
     for index, i in enumerate(date_month):
         if index == 1:
             month = i
-        if index == 3:
+        if index == 2:
             date1 = i
     return month, date1
 
 
 def birthday_checker(list):
+    """
+    This function check today's birthday..
+    """
     month = today_date_month()[0]
     date1 = today_date_month()[1]
     for element in list:
@@ -33,6 +39,9 @@ def birthday_checker(list):
 
 
 def anniversary_checker(list):
+    """
+    This function check today anniversary..
+    """
     month = today_date_month()[0]
     date1 = today_date_month()[1]
     t_a = False
@@ -46,6 +55,9 @@ def anniversary_checker(list):
 
 
 def notification_pusher(string, event, path):
+    """
+    This fucntion will push notification as today's occassion.. 
+    """
     if event == "Birthday":
         notification.notify(
             title=f"Today is {string}'s birthday",
@@ -63,17 +75,19 @@ def notification_pusher(string, event, path):
 
 
 if __name__ == '__main__':
-    path = os.getcwd()
-    with open("birthday.txt") as f:
+    path = os.getcwd() # getting present directory where our text file's our present..
+    with open("birthday.txt") as f: # getting data from birthday.txt..
         a = f.read()
         birthday_list = a.split("\n")
 
-    with open("anniversary.txt") as f:
+    with open("anniversary.txt") as f: # getting data from anniversay.txt..
         b = f.read()
         anniversary_list = b.split("\n")
 
     today_birthday = birthday_checker(birthday_list)
     today_anniversar = anniversary_checker(anniversary_list)
+    
+    # Sending today's birthday for notification..
     if today_birthday != None:
         today_birthday_list = today_birthday.split("/")
         for i in today_birthday_list:
@@ -81,10 +95,10 @@ if __name__ == '__main__':
             time.sleep(7)
     else:
         pass
-
+    
+    # sending today's aniversary for notification...
     if today_anniversar != None:
         today_anniversay_list = today_anniversar.split("+")
-        print(today_anniversay_list)
         for i in today_anniversay_list:
             notification_pusher(i, "Anniversary", path)
             time.sleep(7)
