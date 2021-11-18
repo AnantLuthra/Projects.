@@ -63,7 +63,7 @@ def notification_pusher(string, event, path):
             title=f"Today is {string}'s birthday",
             message=f"Wish {string} a very happy birthday and give them blessings..",
             app_icon=fr"{path}\birthday_cake.ico",
-            timeout=5)
+            timeout=7)
 
     elif event == "Anniversary":
         couple = string.split("/")
@@ -71,7 +71,7 @@ def notification_pusher(string, event, path):
             title=f"Today is {couple[0]} and {couple[1]}'s Anniversary.",
             message=f"Wish {couple[0]} and {couple[1]} a very happy Anniversary and give them blessings..",
             app_icon=fr"{path}\heart_valentine.ico",
-            timeout=5)
+            timeout=7)
 
 
 if __name__ == '__main__':
@@ -92,7 +92,7 @@ if __name__ == '__main__':
         today_birthday_list = today_birthday.split("/")
         for i in today_birthday_list:
             notification_pusher(i, "Birthday", path)
-            time.sleep(7)
+            time.sleep(10)
     else:
         pass
     
@@ -101,6 +101,6 @@ if __name__ == '__main__':
         today_anniversay_list = today_anniversar.split("+")
         for i in today_anniversay_list:
             notification_pusher(i, "Anniversary", path)
-            time.sleep(7)
+            time.sleep(10)
     else:
         pass
