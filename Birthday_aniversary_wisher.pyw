@@ -5,24 +5,22 @@ Purpose: Help me getting notified on every relative's birthday or anniversary.
 """
 
 from plyer import notification
-import time
-import os
+from datetime import datetime
+import os, time
 
 
 def today_date_month():
     """
     Function to get today's date and month for checking our text file..
     """
-    full_time = (time.asctime())
-    date_month = full_time.split(" ")
-    for index, i in enumerate(date_month):
-        if index == 1:
-            month = i
-        if index == 2:
-            date1 = i
+    d = datetime.now()
+    only_date = str(d.date())
+    datetime_list = only_date.split("-")
+    month = datetime_list[1]
+    date1 = datetime_list[2]
     return month, date1
-
-
+    
+    
 def birthday_checker(list):
     """
     This function check today's birthday..
@@ -62,16 +60,14 @@ def notification_pusher(string, event, path):
         notification.notify(
             title=f"Today is {string}'s birthday",
             message=f"Wish {string} a very happy birthday and give them blessings..",
-            app_icon=fr"{path}\birthday_cake.ico",
-            timeout=7)
+            app_icon=fr"{path}\birthday_cake.ico")
 
     elif event == "Anniversary":
         couple = string.split("/")
         notification.notify(
             title=f"Today is {couple[0]} and {couple[1]}'s Anniversary.",
             message=f"Wish {couple[0]} and {couple[1]} a very happy Anniversary and give them blessings..",
-            app_icon=fr"{path}\heart_valentine.ico",
-            timeout=7)
+            app_icon=fr"{path}\heart_valentine.ico")
 
 
 if __name__ == '__main__':
