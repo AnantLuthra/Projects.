@@ -60,14 +60,16 @@ def notification_pusher(string, event, path):
         notification.notify(
             title=f"Today is {string}'s birthday",
             message=f"Wish {string} a very happy birthday and give them blessings..",
-            app_icon=fr"{path}\birthday_cake.ico")
+            app_icon=fr"{path}\birthday_cake.ico",
+            timeout=12)
 
     elif event == "Anniversary":
         couple = string.split("/")
         notification.notify(
             title=f"Today is {couple[0]} and {couple[1]}'s Anniversary.",
             message=f"Wish {couple[0]} and {couple[1]} a very happy Anniversary and give them blessings..",
-            app_icon=fr"{path}\heart_valentine.ico")
+            app_icon=fr"{path}\heart_valentine.ico",
+            timeout=12)
 
 
 if __name__ == '__main__':
